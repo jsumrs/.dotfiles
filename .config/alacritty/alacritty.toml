@@ -1,4 +1,11 @@
+import = [
+    #https://github.com/alacritty/alacritty-theme
+    "~/.config/alacritty/themes/themes/gruvbox_material_hard_dark.toml"
+]
+
 [font]
-size = 11
+size = 16
+
 [font.normal]
-family = "IBM Plex Mono"
+#family = "IBM Plex Mono"
+family = "Fixedsys Excelsior 3.01"
