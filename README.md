@@ -1,4 +1,4 @@
-## Dotfiles
+## How-To
 I use [GNU Stow](https://www.gnu.org/software/stow/) to manage my dotfiles.  
 If you want to copy them to your system:
 
