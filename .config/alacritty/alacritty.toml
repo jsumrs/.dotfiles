@@ -1,11 +1,13 @@
 import = [
     #https://github.com/alacritty/alacritty-theme
-    "~/.config/alacritty/themes/themes/cyber_punk_neon.toml"
+    #"~/.config/alacritty/themes/themes/tokyo_night_enhanced.toml"
+    "~/.config/alacritty/themes/themes/hardhacker.toml"
+
 ]
 
 [font]
-size = 16
+size = 14 
 
 [font.normal]
-#family = "IBM Plex Mono"
-family = "Fixedsys Excelsior 3.01"
+family = "IBM Plex Mono"
+#family = "Fixedsys Excelsior 3.01"
