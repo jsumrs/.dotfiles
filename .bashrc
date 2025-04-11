@@ -129,3 +129,19 @@ export PATH="$LD_LIBRARY_PATH:$PATH"
 # Add zoxide to shell
 eval "$(zoxide init bash)"
 export PATH=$PATH:~/.local/bin
+
+# Add flutter to shell
+export PATH="$HOME/development/flutter/bin:$PATH"
+
+# Android
+export PATH="$HOME/Android:$PATH"
+
+# Java home
+export JAVA_HOME="/home/jason/.jdks/jbr-17.0.12/"
+
+# Go Lang
+export PATH=$PATH:/usr/local/go/bin
+
+# nvim
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+
