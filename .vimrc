@@ -32,3 +32,25 @@ highlight MatchParen gui=underline guibg=black guifg=NONE
 " Set auto word wrap
 set textwidth=100
 set wrap
+
+" Navigate through visual lines when they are wrapped at the end.
+nnoremap j gj
+nnoremap k gk
+xnoremap j gj
+xnoremap k gk
+
+" Quicker navigation
+nmap J 5j
+nmap K 5k
+xmap J 5j
+xmap K 5k
+
+" Easier movement between split windows
+nmap gh <C-w>h
+nmap gj <C-w>j
+nmap gk <C-w>k
+nmap gl <C-w>l
+
+
+
+
