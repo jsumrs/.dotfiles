@@ -1,38 +1,73 @@
-" Set relative line numbers
-set number relativenumber
+"----- Notes -----
+" Tag Jumping:
+" ^ == Ctrl
+" ^] to jump to tag under cursor
+" g^] for ambiguous tags
+" ^t to jump back up the tag stack
+" Autocomplete:
+" ^x^n   This file only
+" ^x^f   Filenames only
+" ^x^]   Tags only
+" ^n     Anything specified by 'complete' option
+"
+"
+"------ Mechanical Changes -----
+set number relativenumber " Relative line numbers
+set tabstop=4             " 1 tab = 4 spaces 
+set shiftwidth=4          " Number of spaces to use for each step of (auto)indent
+set expandtab             " Convert tabs to spaces
+set smartindent           " Enable smart autoindenting when starting a new line
+set scrolloff=10          " Keep at least 10 lines above and below cursor while scrolling
+set sidescrolloff=10      " Keep at least 10 lines above and below the cursor in 
+set ignorecase            " Ignore case when searching
+set smartcase             " Searching is case-sensitive only if the pattern contains uppercase chars
+set textwidth=100         " Set auto word wrap
+set wrap                  " Wrap text automatically 
+set linebreak             " Prevent wrap from cutting word in half
+set clipboard=unnamedplus " Enable system clipboard.
+set path+=**              " Allow find command to search down into subfolders
+set wildmenu              " Display all matching files for tab complete
+set nocompatible          " Don't pretend to be vi
 
-" Set the number of spaces tabs count for
-set tabstop=4
+"" netrw                  
+syntax enable             " Turn on syntax highlighting
+filetype plugin on        " Load plugin file for detected filetype
+let g:netrw_banner=0      " Disable annoying banner
+let g:netrw_browse_split=4 " Open in prior window
+let g:netrw_altv=1        " Open splits to the right
+let g:netrw_liststyle=3   " Tree view
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
-" Sets the number of spaces to use for each step of (auto)indent
-set shiftwidth=4
+" Tag Jumping
+command! MakeTags !ctags -R . " Create tags file
 
-" Convert tabs to spaces
-set expandtab
 
-" Enable smart autoindenting when starting a new line
-set smartindent
-
-" Keep at least 10 lines above and below cursor while scrolling
-set scrolloff=10
-
-" Keep at least 10 lines above and below the cursor in 
-set sidescrolloff=10
-
-" Ignore case when searching
-set ignorecase
-
-" Searching is case-sensitive only if the pattern contains uppercase chars
-set smartcase
-
+"----- Visual Changes ----- 
 " Set sensible highlighting on braces that does not obscure text
 highlight MatchParen cterm=underline ctermbg=black ctermfg=NONE
 highlight MatchParen gui=underline guibg=black guifg=NONE
+set title "Show filename in status line
 
-" Set auto word wrap
-set textwidth=100
-set wrap
+" Kanegawa Theme
+" Returns true if the color hex value is light
+function! IsHexColorLight(color) abort
+  let l:raw_color = trim(a:color, '#')
 
+  let l:red = str2nr(substitute(l:raw_color, '.{0}(.{2})', '1', 'g'), 16)
+  let l:green = str2nr(substitute(l:raw_color, '.{2}(.{2}).{2}', '1', 'g'), 16)
+  let l:blue = str2nr(substitute(l:raw_color, '.{4}(.{2})', '1', 'g'), 16)
+
+  let l:brightness = ((l:red * 299) + (l:green * 587) + (l:blue * 114)) / 1000
+
+  return l:brightness > 155
+endfunction
+
+" Blue line numbers
+highlight LineNr ctermfg=blue
+
+
+"----- HOTKEYS -----
 " Navigate through visual lines when they are wrapped at the end.
 nnoremap j gj
 nnoremap k gk
@@ -50,7 +85,4 @@ nmap gh <C-w>h
 nmap gj <C-w>j
 nmap gk <C-w>k
 nmap gl <C-w>l
-
-
-
 
