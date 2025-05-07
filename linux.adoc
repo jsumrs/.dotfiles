@@ -1,0 +1,101 @@
+= Linux Notes
+:toc: left
+
+== Changing brightness:
+
+`sudo brightnessctl -c backlight set 50%`
+
+== i3
+
+.i3 setup:
+* 1: Vim Core Task
+* 2: Terminal
+* 3: Scratchpad Area (Multi-use)
+* 4: Browser
+* 5: Discord
+* 6: Spotify
+* 9: HTop
+
+`mod` is setup as ALT
+
+.shortcuts:
+* apps: `mod + d`  
+* terminal: `mod + enter` 
+* panes: `mod + [0-9]`
+* logout: `mod + shift + e(xit)`
+* move window to different workspace: `mod + shift + [0-9]`
+
+== xrandr
+find info:
+`xrandr --current`
+
+set monitor to duplicate:
+`xrandr --output <projector> --same-as <desktop>(find out with --current flag)`
+
+== Zoxide
+A smart `cd` command which remembers previous visits.
+Used with `z`
+
+== eza
+A smart `ls` command.
+
+== tree
+List files in a tree like structure.
+
+== disk usage
+df is aliased, show aliases with `alias`
+`df`
+
+== stow (configurations / dotfiles)
+Stow is used to manage .dotfiles. 
+
+. `git clone https://github.com/jsumrs/.dotfiles ~`
+. `cd ~/.dotfiles`
+. `stow .`
+
+== Vim
+Run a command: `:!unix_command`
+View a reg (or a macro): `:reg q[or any other register/macro]`
+Open file browser: `:edit [folder]`
+    <CR>/v/t to open an h-split/v-split tab
+For more mappings check |netrw-browse-maps|
+
+== Helix
+Modal editor inspired by vim. It uses [object][action] syntax instead of vim's [action][object]
+syntax.
+
+To change formatting options:
+1. Install the appropriate formatter, in the case of cpp, install clang-format
+2. https://docs.helix-editor.com/languages.html[Setup] the languages file: `~/.config/helix/languages.toml` 
+3. Set the style flag to WebKit.
+
+== Fonts
+TTF Fonts are installed to /usr/share/fonts/TrueType
+
+Reload fonts:
+`fc-cache -f -v reload`
+
+List fonts:
+`fc-list`
+
+== Journal
+
+Journal entries are encrypted by default and can be accessed by mounting the encrypted folder
+`~/.crypt_notes` to `~/Thoughts`:
+
+`gocryptfs $HOME/.crypt_notes $HOME/Thoughts`
+
+Be sure to unmount after with:
+`fusermount -u ~/Thoughts`
+
+
+== Column
+`column` can be used to align text. This might be useful for aligning comments or code. 
+An example from ~/.vimrc:
+
+== Power management
+tlp for power optimization:
+`sudo tlp-stat -s(hort)`
+
+powertop for power monitoring:
+`sudo powertop`
