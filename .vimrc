@@ -1,16 +1,3 @@
-"----- Notes -----
-" Tag Jumping:
-" ^ == Ctrl
-" ^] to jump to tag under cursor
-" g^] for ambiguous tags
-" ^t to jump back up the tag stack
-" Autocomplete:
-" ^x^n   This file only
-" ^x^f   Filenames only
-" ^x^]   Tags only
-" ^n     Anything specified by 'complete' option
-"
-"
 "------ Mechanical Changes -----
 set number relativenumber " Relative line numbers
 set tabstop=4             " 1 tab = 4 spaces 

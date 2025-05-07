@@ -60,6 +60,22 @@ Open file browser: `:edit [folder]`
     <CR>/v/t to open an h-split/v-split tab
 For more mappings check |netrw-browse-maps|
 
+Tag Jumping:
+`^` == Ctrl
+`^]` to jump to tag under cursor
+`g^]` for ambiguous tags
+`^t` to jump back up the tag stack
+
+Autocomplete:
+`^x^n`   This file only
+`^x^f`   Filenames only
+`^x^]`   Tags only
+`^n`     Anything specified by 'complete' option
+`<CR>`   Means carriage-return not ctrl. 
+
+Surround word in quotes:
+`c w "" ESC P`
+
 == Helix
 Modal editor inspired by vim. It uses [object][action] syntax instead of vim's [action][object]
 syntax.
