@@ -5,3 +5,5 @@
 	name = jsumrs
 [commit]
 	verbose = true
+[diff]
+	algorithm = histogram
