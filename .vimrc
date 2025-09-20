@@ -74,11 +74,13 @@ nnoremap k gk
 xnoremap j gj
 xnoremap k gk
 
+" (DEPECRIATED) 
+" USE "ctrl + u" or "ctrl + d" 
 " Quicker navigation
-nmap J 5j
-nmap K 5k
-xmap J 5j
-xmap K 5k
+" nmap J 5j
+" nmap K 5k
+" xmap J 5j
+" xmap K 5k
 
 " Easier movement between split windows
 nmap gh <C-w>h
