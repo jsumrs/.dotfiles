@@ -19,83 +19,139 @@
 `mod` is setup as ALT
 
 .shortcuts:
-* apps: `mod + d`  
-* terminal: `mod + enter` 
-* panes: `mod + [0-9]`
-* logout: `mod + shift + e(xit)`
-* move window to different workspace: `mod + shift + [0-9]`
+* apps:: `mod + d`
+* terminal:: `mod + enter`
+* panes:: `mod + [0-9]`
+* logout:: `mod + shift + e` (for exit)
+* move window to different workspace:: `mod + shift + [0-9]`
+
+== bash
+
+Put aliases into `~/.bash_aliases`
+
+Put exports into `~/.exports.sh` (These are per machine and not synced to github)
 
 == xrandr
-find info:
-`xrandr --current`
 
-set monitor to duplicate:
-`xrandr --output <projector> --same-as <desktop>(find out with --current flag)`
+find info::
+  `xrandr --current`
+
+set monitor to duplicate::
+  `xrandr --output <projector> --same-as <desktop>` (find names with `--current`)
 
 == Zoxide
+
 A smart `cd` command which remembers previous visits.
-Used with `z`
+Used with `z`.
 
 == eza
+
 A smart `ls` command.
 
 == tree
+
 List files in a tree like structure.
 
 == disk usage
-df is aliased, show aliases with `alias`
+
+`df` is aliased, show aliases with `alias`.
 `df`
 
 == stow (configurations / dotfiles)
-Stow is used to manage .dotfiles. 
+
+Stow is used to manage .dotfiles.
 
 . `git clone https://github.com/jsumrs/.dotfiles ~`
 . `cd ~/.dotfiles`
 . `stow .`
 
 == Vim
-Run a command: `:!unix_command`
-View a reg (or a macro): `:reg q[or any other register/macro]`
-Open file browser: `:edit [folder]`
-    <CR>/v/t to open an h-split/v-split tab
-For more mappings check |netrw-browse-maps|
+
+Run a command:: `:!unix_command`
+View a reg (or a macro):: `:reg q` (or any other register/macro)
+Open file browser (Netrw)::
+  `:edit [folder]`
++
+  `<CR>`/`v`/`t` to open in current window / vertical split / new tab.
++
+  For more mappings check `|netrw-browse-maps|` in Vim help.
+
+Tag Jumping::
+  NOTE: `^` means Ctrl.
++
+  +^]+:: Jump to tag under cursor.
+  +g^]+:: For ambiguous tags.
+  +^t+:: Jump back up tag stack.
+
+Autocomplete::
+  NOTE: `<CR>` means Enter, not Ctrl-R.
++
+  `+^x^n+`:: Current file keywords.
+  `+^x^f+`:: Filenames.
+  `+^x^]+`:: Tags.
+  `+^n+`:: From 'complete' option sources. // `+^n+` is fine, ^n alone rarely problematic
+
+Surround word in quotes::
+  `caw""<Esc>P` (change a word, type quotes, escape, paste)
 
 == Helix
-Modal editor inspired by vim. It uses [object][action] syntax instead of vim's [action][object]
-syntax.
+
+Modal editor inspired by Vim. Uses `[object][action]` syntax instead of Vim's `[action][object]`.
 
 To change formatting options:
-1. Install the appropriate formatter, in the case of cpp, install clang-format
-2. https://docs.helix-editor.com/languages.html[Setup] the languages file: `~/.config/helix/languages.toml` 
-3. Set the style flag to WebKit.
+
+. Install the appropriate formatter (e.g., `clang-format` for C\+\+).
+. Edit `+~/.config/helix/languages.toml+`. See https://docs.helix-editor.com/languages.html[Setup Guide].
+. Example for C\+\+ to use WebKit style with +clang-format+:
++
+[source,toml]
+----
+[[language]]
+name = "cpp"
+formatter = { command = "clang-format", args = ["--style=WebKit"] }
+----
 
 == Fonts
-TTF Fonts are installed to /usr/share/fonts/TrueType
 
-Reload fonts:
-`fc-cache -f -v reload`
+TTF Fonts are installed to `/usr/share/fonts/TrueType`
 
-List fonts:
-`fc-list`
+Reload fonts::
+  `fc-cache -f -v` (force, verbose)
+
+List fonts::
+  `fc-list`
 
 == Journal
 
-Journal entries are encrypted by default and can be accessed by mounting the encrypted folder
-`~/.crypt_notes` to `~/Thoughts`:
-
+Journal entries are encrypted. Mount `~/.crypt_notes` to `~/Thoughts`:
 `gocryptfs $HOME/.crypt_notes $HOME/Thoughts`
 
-Be sure to unmount after with:
-`fusermount -u ~/Thoughts`
-
+Unmount after::
+  `fusermount -u ~/Thoughts`
 
 == Column
-`column` can be used to align text. This might be useful for aligning comments or code. 
-An example from ~/.vimrc:
+
+`column` can align text. Useful for comments or code.
+Example from `~/.vimrc`:
+
+[source,vimscript]
+----
+"------ Mechanical Changes -----
+set number relativenumber " Relative line numbers
+set tabstop=4             " 1 tab = 4 spaces 
+set shiftwidth=4          " Number of spaces to use for each step of (auto)indent
+set expandtab             " Convert tabs to spaces
+set smartindent           " Enable smart autoindenting when starting a new line
+set scrolloff=10          " Keep at least 10 lines above and below cursor while scrolling
+set sidescrolloff=10      " Keep at least 10 lines above and below the cursor in 
+set ignorecase            " Ignore case when searching
+set smartcase             " Searching is case-sensitive only if the pattern contains uppercase chars
+----
 
 == Power management
-tlp for power optimization:
-`sudo tlp-stat -s(hort)`
 
-powertop for power monitoring:
-`sudo powertop`
+tlp for power optimization::
+  `sudo tlp-stat -s` (status, short)
+
+powertop for power monitoring::
+  `sudo powertop`

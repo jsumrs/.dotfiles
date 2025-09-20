@@ -113,33 +113,4 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Set PS1
-PS1='\W: '
-
-# Set LD Lib Path for ORACLE SQLPlus
-export LD_LIBRARY_PATH="/opt/oracle/instantclient_23_5"
-export ORACLE_HOME="$LD_LIBRARY_PATH"
-
-# Set PATH env vars for ORACLE SQLPlus
-export PATH="$LD_LIBRARY_PATH:$PATH"
-
-# Add zoxide to shell
-eval "$(zoxide init bash)"
-export PATH=$PATH:~/.local/bin
-
-# Add flutter to shell
-export PATH="$HOME/development/flutter/bin:$PATH"
-
-# Android
-export PATH="$HOME/Android:$PATH"
-
-# Java home
-export JAVA_HOME="/home/jason/.jdks/jbr-17.0.12/"
-
-# Go Lang
-export PATH=$PATH:/usr/local/go/bin
-
-# nvim
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-
-. "$HOME/.cargo/env"
+source ~/.exports.sh
