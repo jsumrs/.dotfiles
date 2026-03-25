@@ -36,7 +36,8 @@ highlight MatchParen cterm=underline ctermbg=black ctermfg=NONE
 highlight MatchParen gui=underline guibg=black guifg=NONE
 set title "Show filename in status line
 
-colorscheme zaibatsu
+" colorscheme zaibatsu
+colorscheme default
 
 "----- HOTKEYS -----
 " Navigate through visual lines when they are wrapped at the end.
