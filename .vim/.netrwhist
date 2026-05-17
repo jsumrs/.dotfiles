@@ -1,3 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/Users/june/Developer/Projects/RayTracer'
+let g:netrw_dirhist_3='/Users/june/Developer/Bibidi/mobile-app-FE'
+let g:netrw_dirhist_2='/Users/june/Developer/dotfiles'
 let g:netrw_dirhist_1='/home/jn/Documents/Fall25/COSC404/OracleDB'
