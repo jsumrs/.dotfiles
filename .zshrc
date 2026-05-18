@@ -9,7 +9,7 @@ eval "$(zoxide init zsh)"
 alias df="df -h"
 alias rm="rm -i"
 alias ll='ls -alF'
-Alias la='ls -A'
+alias la='ls -A'
 alias l='ls -CF'
 
 HISTFILE=~/.zsh_history
