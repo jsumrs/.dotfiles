@@ -1,0 +1,53 @@
+
+gui:
+  theme:
+    # Focused window border — everforest green
+    activeBorderColor:
+      - '#A7C080'
+      - bold
+ 
+    # Unfocused window border — muted grey
+    inactiveBorderColor:
+      - '#4F585E'
+ 
+    # Border when searching — everforest blue
+    searchingActiveBorderColor:
+      - '#7FBBB3'
+      - bold
+ 
+    # Keybinding help text — everforest yellow
+    optionsTextColor:
+      - '#DBBC7F'
+ 
+    # Selected line background — bg_blue (dim blue highlight)
+    selectedLineBgColor:
+      - '#3A515D'
+ 
+    # Selected line in unfocused panel — bold only, no color
+    inactiveViewSelectedLineBgColor:
+      - bold
+ 
+    # Cherry-picked commit foreground — everforest aqua
+    cherryPickedCommitFgColor:
+      - '#83C092'
+ 
+    # Cherry-picked commit background — bg_blue
+    cherryPickedCommitBgColor:
+      - '#3A515D'
+ 
+    # Marked base commit foreground (rebase) — everforest yellow
+    markedBaseCommitFgColor:
+      - '#DBBC7F'
+ 
+    # Marked base commit background (rebase) — bg_yellow
+    markedBaseCommitBgColor:
+      - '#4D4C43'
+ 
+    # Unstaged changes — everforest red
+    unstagedChangesColor:
+      - '#E67E80'
+ 
+    # Default foreground — everforest fg
+    defaultFgColor:
+      - '#D3C6AA'
+ 

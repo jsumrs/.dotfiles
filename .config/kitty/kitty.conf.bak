@@ -1,0 +1,6 @@
+# BEGIN_KITTY_THEME
+# Duskfox
+include current-theme.conf
+# END_KITTY_THEME
+
+font_family MesloLGS NF
