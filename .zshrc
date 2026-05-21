@@ -1,15 +1,22 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
+  # Mac
+  echo "source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
   eval "$(/Users/june/.local/bin/mise activate zsh)"
   alias ls='ls -G'
 else
+  # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+  # Initialization code that may require console input (password prompts, [y/n]
+  # confirmations, etc.) must go above this block; everything else may go below.
+  if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  fi
+  # Linux
   alias ls='ls --color=auto'
+    
+  # Added by swiftly
+  . "/home/jn/.local/share/swiftly/env.sh"
+  export PATH="$HOME/.local/share/swiftly/bin:$PATH"
 fi
 
 eval "$(zoxide init zsh)"
@@ -39,7 +46,5 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# Added by swiftly
-. "/home/jn/.local/share/swiftly/env.sh"
-export PATH="$HOME/.local/share/swiftly/bin:$PATH"
 
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
