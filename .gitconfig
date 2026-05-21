@@ -1,7 +1,7 @@
 [init]
 	defaultBranch = main
 [user]
-	email = github@jasoncodes.ca
+	email = contact@jsumrs.ca
 	name = jsumrs
 [commit]
 	verbose = true
