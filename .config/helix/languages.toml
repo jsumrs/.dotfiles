@@ -3,3 +3,6 @@ name = "cpp"
 formatter = { command = "clang-format", args = ["-style=WebKit"]}
 indent = { tab-width = 4, unit = "    " }
 
+[[language]]
+name = "swift"
+indent = { tab-width = 2, unit = "  "}
