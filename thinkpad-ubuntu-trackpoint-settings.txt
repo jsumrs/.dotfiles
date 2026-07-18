@@ -1,0 +1,40 @@
+
+Here are the instructions:
+
+    Install the libinput driver
+    $ sudo apt-get install xserver-xorg-input-libinput
+
+    Change the sensitivity and speed of the trackpoint
+    $ cd /etc/udev/rules.d
+    $ sudo touch 10-trackpoint.rules
+    $ sudo nano 10-trackpoint.rules
+
+    Paste the following lines into the file:
+
+    ACTION=="add",
+    SUBSYSTEM=="input",
+    ATTR{name}=="TPPS/2 IBM TrackPoint",
+    ATTR{device/sensitivity}="132",
+    ATTR{device/speed}="158",
+    ATTR{device/inertia}="6",
+    ATTR{device/press_to_select}="0"
+
+    Save the file by pressing Ctrl+O.
+
+    Finally, change the acceleration of the cursor.
+
+    $ cd /usr/share/X11/xorg.conf.d/
+    $ sudo nano 90-libinput.conf
+    Replace the first section with the following code:
+
+    Section "InputClass"
+    Identifier "libinput pointer catchall"
+    MatchIsPointer "on"
+    MatchDevicePath "/dev/input/event*"
+    Driver "libinput"
+    Option "AccelSpeed" "-0.40"
+    EndSection
+
+    Save the file with Ctrl+O.
+
+    Log on again and enjoy your perfect trackpoint experience!
