@@ -4,9 +4,11 @@ call plug#begin()
 "------ Put Plugins Here -------
 " Call :PlugInstall after installation
 Plug 'junegunn/vim-easy-align'
+Plug 'NoahTheDuke/vim-just' " `just` tool syntax support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 """""""" Install CoC LSPs with :CoCInstall <language-server>
 """""""" https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+
 call plug#end()
 
 " EasyAlign Binding
@@ -27,7 +29,7 @@ set smartcase             " Searching is case-sensitive only if the pattern cont
 set textwidth=100         " Set auto word wrap
 set wrap                  " Wrap text automatically
 set linebreak             " Prevent wrap from cutting word in half
-set clipboard=unnamedplus " Enable system clipboard.
+" set clipboard=unnamedplus " Enable system clipboard.
 set path+=**              " Allow find command to search down into subfolders
 set wildmenu              " Display all matching files for tab complete
 set nocompatible          " Don't pretend to be vi
@@ -56,6 +58,23 @@ augroup END
 
 " Tag Jumping
 command! MakeTags !ctags -R . " Create tags file
+
+" cross-file rename
+nmap <leader>rn <Plug>(coc-rename)
+
+" go to definition / declaration
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gD <Plug>(coc-declaration)
+
+" hover docs (function header + documentation, the Helix K popup)
+nnoremap <silent> K :call ShowDocumentation()<CR>
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
 
 
 "----- Visual Changes ----- 
