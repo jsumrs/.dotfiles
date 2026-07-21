@@ -63,3 +63,56 @@ export PATH="/Users/june/Library/Application Support/Herd/bin/":$PATH
 
 # Disable .NET tools (extension in VSCode) telemetry
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+# Enable .dotnet tools 
+export PATH="$PATH:/Users/june/.dotnet/tools"
+
+# Asciidoc Live Preview
+# Usage: adoc-preview <file.adoc>
+adoc-preview() {
+  emulate -L zsh
+  setopt local_options no_nomatch
+
+  if [[ -z "$1" ]]; then
+    print -u2 "usage: adoc-preview <file.adoc>"
+    return 1
+  fi
+
+  # Resolve to an absolute path portably.
+  # zsh's :A modifier does this without needing GNU readlink.
+  local src="${1:A}"
+  if [[ ! -f "$src" ]]; then
+    print -u2 "adoc-preview: no such file: $1"
+    return 1
+  fi
+
+  local outdir base out server_pid
+  outdir=$(mktemp -d)
+  base="${${src:t}:r}"          # :t = tail (basename), :r = strip extension
+  out="$outdir/$base.html"
+
+  local -a asciidoctor_args
+  asciidoctor_args=(-a source-highlighter=highlight.js)
+
+  # Initial build so the page exists before the server opens it.
+  asciidoctor "${asciidoctor_args[@]}" "$src" -o "$out"
+
+  # Start the live-reload server in the background.
+  npx live-server "$outdir" --open="$base.html" &
+  server_pid=$!
+
+  # Tear down server and temp dir on any exit path.
+  _adoc_preview_cleanup() {
+    kill "$server_pid" 2>/dev/null
+    rm -rf "$outdir"
+  }
+  trap '_adoc_preview_cleanup; return' INT TERM
+
+  # Rebuild on every write. entr blocks until interrupted.
+  # /_ is the changed file.
+  print -r -- "$src" | entr asciidoctor "${asciidoctor_args[@]}" /_ -o "$out"
+
+  # Cleanup if entr exits on its own (e.g. file removed).
+  _adoc_preview_cleanup
+  unfunction _adoc_preview_cleanup 2>/dev/null
+}
