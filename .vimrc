@@ -1,6 +1,12 @@
 "------ Vim Plugins ------------
+" Uses vim-plug
 call plug#begin()
+"------ Put Plugins Here -------
+" Call :PlugInstall after installation
 Plug 'junegunn/vim-easy-align'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"""""""" Install CoC LSPs with :CoCInstall <language-server>
+"""""""" https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
 call plug#end()
 
 " EasyAlign Binding
