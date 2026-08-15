@@ -76,6 +76,8 @@ function! ShowDocumentation()
   endif
 endfunction
 
+" Insert a C# code block for Asciidoc
+nnoremap <leader>cs O[source,cs]<CR>----<CR><CR>----<Esc>kA
 
 "----- Visual Changes ----- 
 " Set sensible highlighting on braces that does not obscure text
@@ -83,7 +85,8 @@ highlight MatchParen cterm=underline ctermbg=black ctermfg=NONE
 highlight MatchParen gui=underline guibg=black guifg=NONE
 set title "Show filename in status line
 
-colorscheme embark 
+colorscheme torte 
+
 
 " Force true colors on
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
