@@ -23,8 +23,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " EasyAlign Binding
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
+xmap <leader>a <Plug>(EasyAlign)
+nmap <leader>a <Plug>(EasyAlign)
 
 
 "------ Mechanical Changes -----
@@ -40,7 +40,6 @@ set smartcase             " Searching is case-sensitive only if the pattern cont
 set textwidth=100         " Set auto word wrap
 set wrap                  " Wrap text automatically
 set linebreak             " Prevent wrap from cutting word in half
-" set clipboard=unnamedplus " Enable system clipboard.
 set path+=**              " Allow find command to search down into subfolders
 set wildmenu              " Display all matching files for tab complete
 set nocompatible          " Don't pretend to be vi
