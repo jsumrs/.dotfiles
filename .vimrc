@@ -6,7 +6,7 @@ call plug#begin()
 Plug 'junegunn/vim-easy-align'
 Plug 'NoahTheDuke/vim-just' " `just` tool syntax support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"""""""" Install CoC LSPs with :CoCInstall <language-server>
+"""""""" Install CoC LSPs with :CocInstall <language-server>
 """""""" https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
 
 call plug#end()

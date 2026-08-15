@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =4
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/home/jn/Developer/Projects/FruitStonks/FruitStonks'
+let g:netrw_dirhist_5='/home/jn/Developer/Projects/FruitStonks'
 let g:netrw_dirhist_4='/Users/june/Developer/Projects/RayTracer'
 let g:netrw_dirhist_3='/Users/june/Developer/Bibidi/mobile-app-FE'
 let g:netrw_dirhist_2='/Users/june/Developer/dotfiles'
