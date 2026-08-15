@@ -1,3 +1,5 @@
+" TODO:
+"   Create a githook to create ctags when committing (or pushing, or w/e)
 " Features to get more familiar with
 "   Tabs (tabe <file>)
 "   easy-align plugin
@@ -8,23 +10,11 @@
 "   netrw
 
 
-
-"------ Vim Plugins ------------
-" Uses vim-plug
-call plug#begin()
-"------ Put Plugins Here -------
-" Call :PlugInstall after installation
-Plug 'junegunn/vim-easy-align'
-Plug 'NoahTheDuke/vim-just' " `just` tool syntax support
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"""""""" Install CoC LSPs with :CocInstall <language-server>
-"""""""" https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
-
-call plug#end()
-
-" EasyAlign Binding
-xmap <leader>a <Plug>(EasyAlign)
-nmap <leader>a <Plug>(EasyAlign)
+" ---- Mac Defaults ---- "
+" Don't write backup file if vim is being called by "crontab -e"
+au BufWrite /private/tmp/crontab.* set nowritebackup nobackup
+" Don't write backup file if vim is being called by "chpass"
+au BufWrite /private/etc/pw.* set nowritebackup nobackup
 
 
 "------ Mechanical Changes -----
@@ -45,15 +35,20 @@ set wildmenu              " Display all matching files for tab complete
 set nocompatible          " Don't pretend to be vi
 set modelines=0           " CVE-2007-2438
 set backspace=2           " more powerful backpacing
-
-let g:mapleader=" "
-
-" Don't write backup file if vim is being called by "crontab -e"
-au BufWrite /private/tmp/crontab.* set nowritebackup nobackup
-" Don't write backup file if vim is being called by "chpass"
-au BufWrite /private/etc/pw.* set nowritebackup nobackup
-
 let skip_defaults_vim=1
+
+
+" ---- vim-plug ---- "
+call plug#begin()
+    " Call :PlugInstall after installation
+    " Install CoC LSPs with :CocInstall <language-server>
+    " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+    
+    Plug 'junegunn/vim-easy-align'
+    Plug 'NoahTheDuke/vim-just' " `just` tool syntax support
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+call plug#end()
+
 
 "" netrw                  
 syntax enable              " Turn on syntax highlighting
@@ -71,12 +66,56 @@ augroup END
 " Tag Jumping
 command! MakeTags !ctags -R . " Create tags file
 
+
+"----- Visual Changes ----- 
+colorscheme torte 
+
+" Set sensible highlighting on braces that does not obscure text
+highlight MatchParen cterm=underline ctermbg=black ctermfg=NONE
+highlight MatchParen gui=underline guibg=black guifg=NONE
+set title "Show filename in status line
+
+" Force true colors on
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
+
+"+++++++++++++++++++"
+"----- HOTKEYS -----"
+"+++++++++++++++++++"
+
+let g:mapleader=" "
+
+" Navigate through visual lines when they are wrapped at the end.
+nnoremap j gj
+nnoremap k gk
+xnoremap j gj
+xnoremap k gk
+
+" Easier movement between split windows
+nmap gh <C-w>h
+nmap gj <C-w>j
+nmap gk <C-w>k
+nmap gl <C-w>l
+
+" Insert a C# code block for Asciidoc
+nnoremap <leader>cs O[source,cs]<CR>----<CR><CR>----<Esc>kA
+
+
+" -- Plugin Bindings -- "
+" Leave terminal with escape
+tnoremap <Esc> <C-\><C-n> 
+
 " cross-file rename
 nmap <leader>rn <Plug>(coc-rename)
 
 " go to definition / declaration
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gD <Plug>(coc-declaration)
+
+" EasyAlign Binding
+xmap <leader>a <Plug>(EasyAlign)
+nmap <leader>a <Plug>(EasyAlign)
 
 " hover docs (function header + documentation, the Helix K popup)
 nnoremap <silent> K :call ShowDocumentation()<CR>
@@ -87,42 +126,4 @@ function! ShowDocumentation()
     call feedkeys('K', 'in')
   endif
 endfunction
-
-" Insert a C# code block for Asciidoc
-nnoremap <leader>cs O[source,cs]<CR>----<CR><CR>----<Esc>kA
-
-"----- Visual Changes ----- 
-" Set sensible highlighting on braces that does not obscure text
-highlight MatchParen cterm=underline ctermbg=black ctermfg=NONE
-highlight MatchParen gui=underline guibg=black guifg=NONE
-set title "Show filename in status line
-
-colorscheme torte 
-
-
-" Force true colors on
-let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-set termguicolors
-
-"----- HOTKEYS -----
-" Navigate through visual lines when they are wrapped at the end.
-nnoremap j gj
-nnoremap k gk
-xnoremap j gj
-xnoremap k gk
-
-" (DEPRECATED) 
-" USE "ctrl + u" or "ctrl + d" 
-" Quicker navigation
-" nmap J 5j
-" nmap K 5k
-" xmap J 5j
-" xmap K 5k
-
-" Easier movement between split windows
-nmap gh <C-w>h
-nmap gj <C-w>j
-nmap gk <C-w>k
-nmap gl <C-w>l
 
