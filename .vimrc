@@ -1,3 +1,14 @@
+" Features to get more familiar with
+"   Tabs (tabe <file>)
+"   easy-align plugin
+"   marks
+"   ctags
+"   fzf
+"   folds
+"   netrw
+
+
+
 "------ Vim Plugins ------------
 " Uses vim-plug
 call plug#begin()
@@ -36,6 +47,8 @@ set nocompatible          " Don't pretend to be vi
 set modelines=0           " CVE-2007-2438
 set backspace=2           " more powerful backpacing
 
+let g:mapleader=" "
+
 " Don't write backup file if vim is being called by "crontab -e"
 au BufWrite /private/tmp/crontab.* set nowritebackup nobackup
 " Don't write backup file if vim is being called by "chpass"
@@ -44,12 +57,12 @@ au BufWrite /private/etc/pw.* set nowritebackup nobackup
 let skip_defaults_vim=1
 
 "" netrw                  
-syntax enable             " Turn on syntax highlighting
-filetype plugin on        " Load plugin file for detected filetype
-let g:netrw_banner=0      " Disable annoying banner
+syntax enable              " Turn on syntax highlighting
+filetype plugin on         " Load plugin file for detected filetype
+let g:netrw_banner=0       " Disable annoying banner
 let g:netrw_browse_split=4 " Open in prior window
-let g:netrw_altv=1        " Open splits to the right
-let g:netrw_liststyle=3   " Tree view
+let g:netrw_altv=1         " Open splits to the right
+let g:netrw_liststyle=3    " Tree view
 let g:netrw_list_hide=''
 augroup netrw_config
   autocmd!
@@ -100,7 +113,7 @@ nnoremap k gk
 xnoremap j gj
 xnoremap k gk
 
-" (DEPRECIATED) 
+" (DEPRECATED) 
 " USE "ctrl + u" or "ctrl + d" 
 " Quicker navigation
 " nmap J 5j
