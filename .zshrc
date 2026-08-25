@@ -30,10 +30,6 @@ alias la='ls -A'
 alias l='ls -CF'
 alias st="swift test"
 
-sr() {
-  swift run && open Output/$(ls -At1 ./Output | head -n 1)
-}
-
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
@@ -57,7 +53,6 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 # Herd injected PHP 8.4 configuration.
 export HERD_PHP_84_INI_SCAN_DIR="/Users/june/Library/Application Support/Herd/config/php/84/"
 
-
 # Herd injected PHP binary.
 export PATH="/Users/june/Library/Application Support/Herd/bin/":$PATH
 
@@ -66,6 +61,9 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # Enable .dotnet tools 
 export PATH="$PATH:/Users/june/.dotnet/tools"
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 
 # Asciidoc Live Preview
 # Usage: adoc-preview <file.adoc>
@@ -116,3 +114,4 @@ adoc-preview() {
   _adoc_preview_cleanup
   unfunction _adoc_preview_cleanup 2>/dev/null
 }
+
