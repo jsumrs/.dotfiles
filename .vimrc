@@ -17,21 +17,23 @@ au BufWrite /private/tmp/crontab.* set nowritebackup nobackup
 au BufWrite /private/etc/pw.* set nowritebackup nobackup
 
 "------ Vim Plugins ------------
-" Uses vim-plug
-call plug#begin()
 
 "------ Put Plugins Here -------
-" Call :PlugInstall after installation
+call plug#begin()
 Plug 'junegunn/vim-easy-align'
-Plug 'NoahTheDuke/vim-just' " `just` tool syntax support
-
+Plug 'NoahTheDuke/vim-just'
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'dense-analysis/ale'
+" Run :PlugInstall after installation
 "-------------------------------
-
 call plug#end()
 
 " EasyAlign Binding
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+" OmniSharp
+let g:OmniSharp_server_stdio = 1   " Use stdio instead of HTTP for LSP communication
 
 
 "------ Mechanical Changes -----
