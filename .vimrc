@@ -58,18 +58,6 @@ set backspace=2           " more powerful backpacing
 let skip_defaults_vim=1
 
 
-" ---- vim-plug ---- "
-call plug#begin()
-    " Call :PlugInstall after installation
-    " Install CoC LSPs with :CocInstall <language-server>
-    " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
-    
-    Plug 'junegunn/vim-easy-align'
-    Plug 'NoahTheDuke/vim-just' " `just` tool syntax support
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-call plug#end()
-
-
 "" netrw                  
 syntax enable              " Turn on syntax highlighting
 filetype plugin on         " Load plugin file for detected filetype
