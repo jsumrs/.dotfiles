@@ -1,8 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =6
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/Users/june/Developer/RiderProjects/FruitStonks/FruitStonks'
+let g:netrw_dirhist_2='/Users/june/Developer/RiderProjects/FruitStonks'
+let g:netrw_dirhist_1='/Users/june/Developer/RiderProjects'
+let g:netrw_dirhist_0='/Users/june/Developer'
+let g:netrw_dirhist_9='/Users/june'
+let g:netrw_dirhist_8='/Users/june/Documents'
+let g:netrw_dirhist_7='/Users/june'
 let g:netrw_dirhist_6='/home/jn/Developer/Projects/FruitStonks/FruitStonks'
 let g:netrw_dirhist_5='/home/jn/Developer/Projects/FruitStonks'
 let g:netrw_dirhist_4='/Users/june/Developer/Projects/RayTracer'
-let g:netrw_dirhist_3='/Users/june/Developer/Bibidi/mobile-app-FE'
-let g:netrw_dirhist_2='/Users/june/Developer/dotfiles'
-let g:netrw_dirhist_1='/home/jn/Documents/Fall25/COSC404/OracleDB'
