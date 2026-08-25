@@ -10,11 +10,28 @@
 "   netrw
 
 
-" ---- Mac Defaults ---- "
+"----- Mac Defaults ---- "
 " Don't write backup file if vim is being called by "crontab -e"
 au BufWrite /private/tmp/crontab.* set nowritebackup nobackup
 " Don't write backup file if vim is being called by "chpass"
 au BufWrite /private/etc/pw.* set nowritebackup nobackup
+
+"------ Vim Plugins ------------
+" Uses vim-plug
+call plug#begin()
+
+"------ Put Plugins Here -------
+" Call :PlugInstall after installation
+Plug 'junegunn/vim-easy-align'
+Plug 'NoahTheDuke/vim-just' " `just` tool syntax support
+
+"-------------------------------
+
+call plug#end()
+
+" EasyAlign Binding
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 
 "------ Mechanical Changes -----
@@ -35,6 +52,7 @@ set wildmenu              " Display all matching files for tab complete
 set nocompatible          " Don't pretend to be vi
 set modelines=0           " CVE-2007-2438
 set backspace=2           " more powerful backpacing
+
 let skip_defaults_vim=1
 
 
@@ -68,12 +86,14 @@ command! MakeTags !ctags -R . " Create tags file
 
 
 "----- Visual Changes ----- 
-colorscheme torte 
 
 " Set sensible highlighting on braces that does not obscure text
 highlight MatchParen cterm=underline ctermbg=black ctermfg=NONE
 highlight MatchParen gui=underline guibg=black guifg=NONE
 set title "Show filename in status line
+
+set background=light
+colorscheme torte
 
 " Force true colors on
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
@@ -84,7 +104,7 @@ set termguicolors
 "----- HOTKEYS -----"
 "+++++++++++++++++++"
 
-let g:mapleader=" "
+let g:mapleader=","
 
 " Navigate through visual lines when they are wrapped at the end.
 nnoremap j gj
@@ -97,33 +117,3 @@ nmap gh <C-w>h
 nmap gj <C-w>j
 nmap gk <C-w>k
 nmap gl <C-w>l
-
-" Insert a C# code block for Asciidoc
-nnoremap <leader>cs O[source,cs]<CR>----<CR><CR>----<Esc>kA
-
-
-" -- Plugin Bindings -- "
-" Leave terminal with escape
-tnoremap <Esc> <C-\><C-n> 
-
-" cross-file rename
-nmap <leader>rn <Plug>(coc-rename)
-
-" go to definition / declaration
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gD <Plug>(coc-declaration)
-
-" EasyAlign Binding
-xmap <leader>a <Plug>(EasyAlign)
-nmap <leader>a <Plug>(EasyAlign)
-
-" hover docs (function header + documentation, the Helix K popup)
-nnoremap <silent> K :call ShowDocumentation()<CR>
-function! ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
-endfunction
-
