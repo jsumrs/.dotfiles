@@ -21,6 +21,8 @@ au BufWrite /private/etc/pw.* set nowritebackup nobackup
 "------ Put Plugins Here -------
 call plug#begin()
 Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'NoahTheDuke/vim-just'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'dense-analysis/ale'
@@ -35,6 +37,8 @@ nmap ga <Plug>(EasyAlign)
 " OmniSharp
 let g:OmniSharp_server_stdio = 1   " Use stdio instead of HTTP for LSP communication
 
+" fzf
+set rtp+=/opt/homebrew/opt/fzf
 
 "------ Mechanical Changes -----
 set number relativenumber " Relative line numbers
@@ -71,9 +75,6 @@ augroup netrw_config
   autocmd FileType netrw let g:netrw_list_hide = netrw_gitignore#Hide() . ',\(^\|\s\s\)\zs\.\S\+'
 augroup END
 
-" Tag Jumping
-command! MakeTags !ctags -R . " Create tags file
-
 
 "----- Visual Changes ----- 
 
@@ -107,3 +108,6 @@ nmap gh <C-w>h
 nmap gj <C-w>j
 nmap gk <C-w>k
 nmap gl <C-w>l
+
+" Generate ctags file
+nnoremap <leader>c :!ctags -r .<cr><cr>
