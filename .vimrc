@@ -41,8 +41,10 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " OmniSharp
-let g:OmniSharp_server_stdio = 1   " Use stdio instead of HTTP for LSP communication
-
+let g:OmniSharp_server_use_net6 = 1
+let g:OmniSharp_server_stdio = 1             " Use stdio instead of HTTP for LSP communication
+let g:ale_linters = { 'cs': ['OmniSharp'] }  " Override ale's own C# linters
+let $DOTNET_ROOT = '/usr/local/share/dotnet' " In case vim is not run from zsh, specify dotnet root here
 
 "------ Mechanical Changes -----
 set number relativenumber      " Relative line numbers

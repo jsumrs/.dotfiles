@@ -61,6 +61,10 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # Enable .dotnet tools 
 export PATH="$PATH:/Users/june/.dotnet/tools"
+export DOTNET_ROOT=/usr/local/share/dotnet
+
+# Postgres Cask
+export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
