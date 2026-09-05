@@ -116,7 +116,7 @@ nnoremap <leader>s :set hlsearch! hlsearch?<cr>
 nnoremap <leader>s :set hlsearch! hlsearch?<cr>
 
 " Generate ctags file
-nnoremap <leader>c :!ctags -r .<cr><cr>
+nnoremap <leader>c :!ctags -R .<cr><cr>
 
 " Navigate through visual lines when they are wrapped at the end.
 nnoremap j gj
