@@ -56,8 +56,6 @@ set scrolloff=10               " Keep at least 10 lines above and below cursor w
 set sidescrolloff=10           " Keep at least 10 lines above and below the cursor in
 set ignorecase                 " Ignore case when searching
 set smartcase                  " Searching is case-sensitive only if the pattern contains uppercase chars
-set textwidth=100              " Set auto word wrap
-set wrap                       " Wrap text automatically
 set linebreak                  " Prevent wrap from cutting word in half
 set path+=**                   " Allow find command to search down into subfolders
 set wildmenu                   " Display all matching files for tab complete
@@ -96,6 +94,8 @@ nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>t :Tags<cr>
 nnoremap <leader>f :BTags<cr>
 nnoremap <leader>h :History<cr>
+nnoremap <leader>. :Files<cr>
+
 
 " buffers and quickfix
 function! ToggleQuickFix()
