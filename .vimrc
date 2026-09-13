@@ -1,4 +1,4 @@
-" TODO:
+#" TODO:
 "   Create a githook to create ctags when committing (or pushing, or w/e)
 " Features to get more familiar with
 "   Tabs (tabe <file>)
@@ -32,6 +32,7 @@ Plug 'NoahTheDuke/vim-just'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'dense-analysis/ale'
 Plug 'tpope/vim-fugitive'
+Plug 'liuchengxu/vim-which-key'
 " Run :PlugInstall after installation
 "-------------------------------
 call plug#end()
@@ -62,7 +63,8 @@ set wildmenu                   " Display all matching files for tab complete
 set nocompatible               " Don't pretend to be vi
 set modelines=0                " CVE-2007-2438
 set backspace=2                " more powerful backpacing
-set hidden                     " Allow changing files when there is error in current file
+set timeoutlen=500             " Delay before which-key popup appears after leader
+set hidden                     " allow switching files when there are warnings / errors
 
 let skip_defaults_vim=1
 
@@ -131,11 +133,37 @@ nmap gj <C-w>j
 nmap gk <C-w>k
 nmap gl <C-w>l
 
+" ----- vim-which-key -----
+nnoremap <silent> <leader> :<c-u>WhichKey ','<cr>
+vnoremap <silent> <leader> :<c-u>WhichKeyVisual ','<cr>
+
+let g:which_key_map = {}
+
+let g:which_key_map['<leader>'] = ['GFiles', 'fuzzy-find-git-files']
+let g:which_key_map.b            = ['Buffers', 'fzf-buffers']
+let g:which_key_map.t            = ['Tags', 'fzf-tags']
+let g:which_key_map.f            = ['BTags', 'fzf-buffer-tags']
+let g:which_key_map.h            = ['History', 'fzf-file-history']
+let g:which_key_map['.']         = ['Files', 'fzf-find-files']
+let g:which_key_map.w            = ['call ToggleQuickFix()', 'toggle-quickfix']
+let g:which_key_map.d            = ['bd', 'delete-buffer']
+let g:which_key_map.g            = ['copen | Ggrep!', 'grep-and-open-quickfix']
+let g:which_key_map.s            = ['set hlsearch! hlsearch?', 'toggle-search-highlight']
+let g:which_key_map.c            = ['!ctags -R .', 'generate-ctags']
+
+call which_key#register(',', 'g:which_key_map')
+
 
 " Set sensible highlighting on braces that does not obscure text
 highlight MatchParen cterm=underline ctermbg=black ctermfg=NONE
 highlight MatchParen gui=underline guibg=black guifg=NONE
 set title "Show filename in status line
+
+" Disable tool and menu bars in gVim
+if has("gui_running")
+    set guioptions -=m
+    set guioptions -=T
+endif
 
 set background=light
 colorscheme torte
