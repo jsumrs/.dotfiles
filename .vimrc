@@ -62,6 +62,7 @@ set wildmenu                   " Display all matching files for tab complete
 set nocompatible               " Don't pretend to be vi
 set modelines=0                " CVE-2007-2438
 set backspace=2                " more powerful backpacing
+set hidden                     " Allow changing files when there is error in current file
 
 let skip_defaults_vim=1
 
