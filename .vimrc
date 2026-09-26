@@ -1,4 +1,4 @@
-#" TODO:
+" TODO:
 "   Create a githook to create ctags when committing (or pushing, or w/e)
 " Features to get more familiar with
 "   Tabs (tabe <file>)
@@ -7,7 +7,6 @@
 "   ctags
 "   fzf
 "   folds
-"   netrw
 "   quickfix window as used in https://opensource.com/article/21/12/vanilla-vim-config
 
 
@@ -29,8 +28,6 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'NoahTheDuke/vim-just'
-Plug 'OmniSharp/omnisharp-vim'
-Plug 'dense-analysis/ale'
 Plug 'tpope/vim-fugitive'
 Plug 'liuchengxu/vim-which-key'
 " Run :PlugInstall after installation
@@ -41,30 +38,27 @@ call plug#end()
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-" OmniSharp
-let g:OmniSharp_server_use_net6 = 1
-let g:OmniSharp_server_stdio = 1             " Use stdio instead of HTTP for LSP communication
-let g:ale_linters = { 'cs': ['OmniSharp'] }  " Override ale's own C# linters
-let $DOTNET_ROOT = '/usr/local/share/dotnet' " In case vim is not run from zsh, specify dotnet root here
 
 "------ Mechanical Changes -----
-set number relativenumber      " Relative line numbers
-set tabstop=4                  " 1 tab = 4 spaces
-set shiftwidth=4               " Number of spaces to use for each step of (auto)indent
-set expandtab                  " Convert tabs to spaces
-set smartindent                " Enable smart autoindenting when starting a new line
-set scrolloff=10               " Keep at least 10 lines above and below cursor while scrolling
-set sidescrolloff=10           " Keep at least 10 lines above and below the cursor in
-set ignorecase                 " Ignore case when searching
-set smartcase                  " Searching is case-sensitive only if the pattern contains uppercase chars
-set linebreak                  " Prevent wrap from cutting word in half
-set path+=**                   " Allow find command to search down into subfolders
-set wildmenu                   " Display all matching files for tab complete
-set nocompatible               " Don't pretend to be vi
-set modelines=0                " CVE-2007-2438
-set backspace=2                " more powerful backpacing
-set timeoutlen=500             " Delay before which-key popup appears after leader
-set hidden                     " allow switching files when there are warnings / errors
+set number relativenumber            " Relative line numbers
+set tabstop=4                        " 1 tab = 4 spaces
+set shiftwidth=4                     " Number of spaces to use for each step of (auto)indent
+set expandtab                        " Convert tabs to spaces
+set smartindent                      " Enable smart autoindenting when starting a new line
+set scrolloff=10                     " Keep at least 10 lines above and below cursor while scrolling
+set sidescrolloff=10                 " Keep at least 10 lines above and below the cursor in
+set ignorecase                       " Ignore case when searching
+set smartcase                        " Searching is case-sensitive only if the pattern contains uppercase chars
+set linebreak                        " Prevent wrap from cutting word in half
+set path+=**                         " Allow find command to search down into subfolders
+set wildmenu                         " Display all matching files for tab complete
+set nocompatible                     " Don't pretend to be vi
+set modelines=0                      " CVE-2007-2438
+set backspace=2                      " more powerful backpacing
+set timeoutlen=200                   " Delay before which-key popup appears after leader
+set ttimeout ttimeoutlen=50          " Don't wait timeoutlen for terminal key codes (skip_defaults_vim drops this)
+set hidden                           " Allow switching from modified buffers
+let g:fzf_layout = { "down": "40%" } " Disable popup fzf window
 
 let skip_defaults_vim=1
 
@@ -87,6 +81,14 @@ augroup END
 "+++++++++++++++++++"
 "----- HOTKEYS -----"
 "+++++++++++++++++++"
+
+" Autocomplete
+set autocomplete
+set complete=.^5,w^5,b^5,u^5
+set completeopt=popup
+
+inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 let g:mapleader=","
 let g:maplocalleader="_"
@@ -115,6 +117,7 @@ nnoremap <leader>d :bd<cr>
 nnoremap <leader>g :copen<cr>:Ggrep!<SPACE>
 nnoremap K :Ggrep "\b<C-R><C-W>\b"<cr>:cw<cr>
 nnoremap <leader>s :set hlsearch! hlsearch?<cr>
+
 " Clear search highlights
 nnoremap <leader>s :set hlsearch! hlsearch?<cr>
 
@@ -139,7 +142,7 @@ vnoremap <silent> <leader> :<c-u>WhichKeyVisual ','<cr>
 
 let g:which_key_map = {}
 
-let g:which_key_map['<leader>'] = ['GFiles', 'fuzzy-find-git-files']
+let g:which_key_map['<leader>']  = ['GFiles', 'fuzzy-find-git-files']
 let g:which_key_map.b            = ['Buffers', 'fzf-buffers']
 let g:which_key_map.t            = ['Tags', 'fzf-tags']
 let g:which_key_map.f            = ['BTags', 'fzf-buffer-tags']
@@ -159,11 +162,6 @@ highlight MatchParen cterm=underline ctermbg=black ctermfg=NONE
 highlight MatchParen gui=underline guibg=black guifg=NONE
 set title "Show filename in status line
 
-" Disable tool and menu bars in gVim
-if has("gui_running")
-    set guioptions -=m
-    set guioptions -=T
-endif
 
 set background=light
 colorscheme torte
