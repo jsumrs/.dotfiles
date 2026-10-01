@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/Users/june/School/cosc419/labs/lab01'
+let g:netrw_dirhist_1='/Users/june/Developer/Blazor/BlazorWebAppMovies/.git'
+let g:netrw_dirhist_0='/Users/june/Developer/Blazor/BlazorWebAppMovies/wwwroot/lib/bootstrap/dist/js'
+let g:netrw_dirhist_9='/Users/june/Developer/Blazor/BlazorWebAppMovies/wwwroot/lib/bootstrap/dist'
+let g:netrw_dirhist_8='/Users/june/Developer/Blazor/BlazorWebAppMovies/wwwroot/lib/bootstrap'
+let g:netrw_dirhist_7='/Users/june/Developer/Blazor/BlazorWebAppMovies/wwwroot/lib'
+let g:netrw_dirhist_6='/Users/june/Developer/Blazor/BlazorWebAppMovies/wwwroot'
+let g:netrw_dirhist_5='/Users/june/Developer/Blazor/BlazorWebAppMovies/Components'
+let g:netrw_dirhist_4='/Users/june/Developer/Blazor/BlazorWebAppMovies/Properties'
+let g:netrw_dirhist_3='/Users/june/Developer/Blazor/BlazorWebAppMovies'

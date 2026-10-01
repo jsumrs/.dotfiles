@@ -311,7 +311,7 @@ web_client {
 // Choose the theme that is specified in the themes section.
 // Defaul: default
 // 
-theme "everforest-dark"
+theme "seaweed"
  
 // Choose the base input mode of zellij.
 // Default: normal

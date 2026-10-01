@@ -30,6 +30,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'NoahTheDuke/vim-just'
 Plug 'tpope/vim-fugitive'
 Plug 'liuchengxu/vim-which-key'
+Plug 'morhetz/gruvbox'
 " Run :PlugInstall after installation
 "-------------------------------
 call plug#end()
@@ -163,6 +164,9 @@ highlight MatchParen gui=underline guibg=black guifg=NONE
 set title "Show filename in status line
 
 
+" Theme
+set background=dark
+colorscheme seaweed-tea_bright
 
 " Force true colors on
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"

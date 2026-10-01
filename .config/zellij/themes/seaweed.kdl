@@ -1,0 +1,161 @@
+// Seaweed — green-and-cream on black with yellow and pink accents.
+// Companion to the seaweed Vim colorscheme and kitty theme.
+//
+// Palette (RGB)
+//   black          0   0   0     #000000
+//   shade1        14  19  14     #0E130E
+//   shade2        26  35  26     #1A231A
+//   shade3        36  48  36     #243024
+//   shade4        46  61  46     #2E3D2E
+//   seaweed-tea   92 123  91     #5C7B5B
+//   mermaids-cove 142 165 134    #8EA586
+//   pine-whisper  178 199 184    #B2C7B8
+//   nano-white    242 239 234    #F2EFEA
+//   almond-cream  252 247 239    #FCF7EF
+//   sunlit-shoal  245 216 106    #F5D86A
+//   coral-rose    247 161 186    #F7A1BA
+//   urchin-pink   232 121 176    #E879B0
+//   tide-clay     197 139 111    #C58B6F
+//   harbour-mist  143 176 179    #8FB0B3
+
+themes {
+    seaweed {
+        // Plain text in the status bar and plugins; emphasis = key hints etc.
+        text_unselected {
+            base 242 239 234
+            background 0 0 0
+            emphasis_0 245 216 106
+            emphasis_1 143 176 179
+            emphasis_2 142 165 134
+            emphasis_3 247 161 186
+        }
+        text_selected {
+            base 252 247 239
+            background 36 48 36
+            emphasis_0 245 216 106
+            emphasis_1 143 176 179
+            emphasis_2 142 165 134
+            emphasis_3 247 161 186
+        }
+
+        // Tabs and mode indicators in the tab bar and status bar
+        ribbon_unselected {
+            base 178 199 184
+            background 26 35 26
+            emphasis_0 245 216 106
+            emphasis_1 143 176 179
+            emphasis_2 142 165 134
+            emphasis_3 247 161 186
+        }
+        ribbon_selected {
+            base 0 0 0
+            background 142 165 134
+            emphasis_0 14 19 14
+            emphasis_1 46 61 46
+            emphasis_2 14 19 14
+            emphasis_3 46 61 46
+        }
+
+        // Tables in built-in plugins (session manager, etc.)
+        table_title {
+            base 245 216 106
+            background 0 0 0
+            emphasis_0 232 121 176
+            emphasis_1 143 176 179
+            emphasis_2 142 165 134
+            emphasis_3 247 161 186
+        }
+        table_cell_unselected {
+            base 242 239 234
+            background 0 0 0
+            emphasis_0 245 216 106
+            emphasis_1 143 176 179
+            emphasis_2 142 165 134
+            emphasis_3 247 161 186
+        }
+        table_cell_selected {
+            base 252 247 239
+            background 36 48 36
+            emphasis_0 245 216 106
+            emphasis_1 143 176 179
+            emphasis_2 142 165 134
+            emphasis_3 247 161 186
+        }
+
+        // Lists in built-in plugins (strider, plugin manager, etc.)
+        list_unselected {
+            base 242 239 234
+            background 0 0 0
+            emphasis_0 245 216 106
+            emphasis_1 143 176 179
+            emphasis_2 142 165 134
+            emphasis_3 247 161 186
+        }
+        list_selected {
+            base 252 247 239
+            background 36 48 36
+            emphasis_0 245 216 106
+            emphasis_1 143 176 179
+            emphasis_2 142 165 134
+            emphasis_3 247 161 186
+        }
+
+        // Pane borders: others dim green, focused mermaids-cove, highlighted yellow
+        frame_unselected {
+            base 46 61 46
+            background 0 0 0
+            emphasis_0 92 123 91
+            emphasis_1 143 176 179
+            emphasis_2 142 165 134
+            emphasis_3 247 161 186
+        }
+        frame_selected {
+            base 142 165 134
+            background 0 0 0
+            emphasis_0 245 216 106
+            emphasis_1 143 176 179
+            emphasis_2 178 199 184
+            emphasis_3 247 161 186
+        }
+        frame_highlight {
+            base 245 216 106
+            background 0 0 0
+            emphasis_0 232 121 176
+            emphasis_1 143 176 179
+            emphasis_2 142 165 134
+            emphasis_3 247 161 186
+        }
+
+        // Command-pane exit codes
+        exit_code_success {
+            base 142 165 134
+            background 0 0 0
+            emphasis_0 245 216 106
+            emphasis_1 143 176 179
+            emphasis_2 178 199 184
+            emphasis_3 247 161 186
+        }
+        exit_code_error {
+            base 232 121 176
+            background 0 0 0
+            emphasis_0 245 216 106
+            emphasis_1 143 176 179
+            emphasis_2 142 165 134
+            emphasis_3 247 161 186
+        }
+
+        // Cursor colours for other users in a shared session
+        multiplayer_user_colors {
+            player_1 245 216 106
+            player_2 247 161 186
+            player_3 143 176 179
+            player_4 142 165 134
+            player_5 232 121 176
+            player_6 197 139 111
+            player_7 178 199 184
+            player_8 252 247 239
+            player_9 92 123 91
+            player_10 242 239 234
+        }
+    }
+}
