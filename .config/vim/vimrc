@@ -165,10 +165,22 @@ set title "Show filename in status line
 
 
 " Theme
-set background=dark
-colorscheme seaweed-tea_bright
+function! SetSystemTheme()
+    " Query GNOME desktop color-scheme preference
+    let l:sys_theme = system('gsettings get org.gnome.desktop.interface color-scheme')
+    if l:sys_theme =~? 'dark'
+        set background=dark
+        colorscheme seaweed-tea_bright
+    else
+        set background=light
+        colorscheme default
+    endif
+endfunction
+
+call SetSystemTheme()
+
 
 " Force true colors on
-let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-set termguicolors
+"let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+"let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+"set termguicolors
