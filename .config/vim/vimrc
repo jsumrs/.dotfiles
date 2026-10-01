@@ -163,8 +163,6 @@ highlight MatchParen gui=underline guibg=black guifg=NONE
 set title "Show filename in status line
 
 
-set background=light
-colorscheme torte
 
 " Force true colors on
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"

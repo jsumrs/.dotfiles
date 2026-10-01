@@ -30,6 +30,10 @@ alias l='ls -CF'
 alias df='df -h'
 alias rm='rm -i'
 
+if [[ -f "../aliases" ]]; then
+    . ../aliases
+fi
+
 # ---- History ----
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -50,7 +54,7 @@ command -v fzf >/dev/null && source <(fzf --zsh)             # Ctrl-R history se
 command -v zoxide >/dev/null && eval "$(zoxide init zsh)"
 
 # ---- Prompt ----
-PROMPT='%n: %1~ ❯ '   # "airflow-sim ❯ " (%1~ = current folder name, ~ for home)
+PROMPT='%1~: '   
 
 # ---- Mac-only functions ----
 if [[ $OSTYPE == darwin* ]]; then
@@ -114,3 +118,6 @@ if [[ $OSTYPE == darwin* ]]; then _zsh_plugins=/opt/homebrew/share; else _zsh_pl
 [[ -r $_zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] &&
     source $_zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 unset _zsh_plugins
+
+eval "$(starship init zsh)"
+
