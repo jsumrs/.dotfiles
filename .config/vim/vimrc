@@ -46,8 +46,8 @@ set tabstop=4                        " 1 tab = 4 spaces
 set shiftwidth=4                     " Number of spaces to use for each step of (auto)indent
 set expandtab                        " Convert tabs to spaces
 set smartindent                      " Enable smart autoindenting when starting a new line
-set scrolloff=10                     " Keep at least 10 lines above and below cursor while scrolling
-set sidescrolloff=10                 " Keep at least 10 lines above and below the cursor in
+set scrolloff=5                      " Keep at least 10 lines above and below cursor while scrolling
+set sidescrolloff=5                  " Keep at least 10 lines above and below the cursor in
 set ignorecase                       " Ignore case when searching
 set smartcase                        " Searching is case-sensitive only if the pattern contains uppercase chars
 set linebreak                        " Prevent wrap from cutting word in half
