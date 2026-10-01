@@ -1,11 +1,4 @@
 # ~/.zshrc, shared by the Mac and WSL. Per-OS parts are inside [[ $OSTYPE == darwin* ]] checks.
-# Tools that may be missing on one machine are guarded, so startup never errors.
-# Old combined version: ~/.dotfiles/.zshrc.bak
-
-# ---- Mac: Powerlevel10k instant prompt. Must stay near the top, before anything that prints. ----
-if [[ $OSTYPE == darwin* && -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
 # ---- PATH ----
 export PATH="$HOME/.local/bin:$PATH"
@@ -57,13 +50,7 @@ command -v fzf >/dev/null && source <(fzf --zsh)             # Ctrl-R history se
 command -v zoxide >/dev/null && eval "$(zoxide init zsh)"
 
 # ---- Prompt ----
-if [[ $OSTYPE == darwin* ]]; then
-  # Powerlevel10k. To customize, run `p10k configure` or edit ~/.p10k.zsh.
-  [[ -r ~/powerlevel10k/powerlevel10k.zsh-theme ]] && source ~/powerlevel10k/powerlevel10k.zsh-theme
-  [[ -r ~/.p10k.zsh ]] && source ~/.p10k.zsh
-else
-  PROMPT='%1~ ❯ '   # "airflow-sim ❯ " (%1~ = current folder name, ~ for home)
-fi
+PROMPT='%n: %1~ ❯ '   # "airflow-sim ❯ " (%1~ = current folder name, ~ for home)
 
 # ---- Mac-only functions ----
 if [[ $OSTYPE == darwin* ]]; then

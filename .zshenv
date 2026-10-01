@@ -1,3 +1,5 @@
+export ZDOTDIR="$HOME/.config/zsh"
+
 # ~/.zshenv, shared by the Mac and WSL. Everything here is Linux/WSL-only.
 if [[ $OSTYPE == linux* ]]; then
   # Ubuntu's /etc/zsh/zshrc runs compinit before ~/.zshrc does. ~/.zshrc runs it itself (after adding
