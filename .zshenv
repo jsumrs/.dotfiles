@@ -13,3 +13,4 @@ if [[ $OSTYPE == linux* ]]; then
   # C:\Windows (explorer.exe) and System32 (clip.exe). Windows programs still need the .exe suffix.
   path=(${path:#/mnt/*} /mnt/c/Windows /mnt/c/Windows/System32)
 fi
+. "$HOME/.cargo/env"

@@ -4,6 +4,7 @@
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:$HOME/.dotnet/tools"   # tools from `dotnet tool install -g`
 export PATH="$PATH:$HOME/.cargo/env"
+export PATH="$PATH:$HOME/.cargo/bin"
 if [[ $OSTYPE == darwin* ]]; then
   export HERD_PHP_84_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/84/"
   export PATH="$HOME/Library/Application Support/Herd/bin/:$PATH"
