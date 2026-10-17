@@ -139,6 +139,9 @@ vim.pack.add({
 
 vim.cmd.colorscheme('rose-pine')
 
+-- See :help MiniAlign.config
+require('mini.align').setup()
+
 -- See :help MiniIcons.config
 -- Change style to 'glyph' if you have a font with fancy icons
 require('mini.icons').setup({style = 'ascii'})
