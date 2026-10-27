@@ -137,7 +137,7 @@ vim.pack.add({
 -- ==                         PLUGIN CONFIGURATION                         == --
 -- ========================================================================== --
 
-vim.cmd.colorscheme('rose-pine')
+vim.cmd.colorscheme('zaibatsu')
 
 -- See :help MiniAlign.config
 require('mini.align').setup()
