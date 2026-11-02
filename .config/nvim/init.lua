@@ -137,7 +137,13 @@ vim.pack.add({
 -- ==                         PLUGIN CONFIGURATION                         == --
 -- ========================================================================== --
 
-vim.cmd.colorscheme('zaibatsu')
+---@type fluoromachine
+local fm = require 'fluoromachine'
+fm.setup {
+	theme = 'delta'
+}
+
+vim.cmd.colorscheme('fluoromachine')
 
 -- See :help MiniAlign.config
 require('mini.align').setup()
