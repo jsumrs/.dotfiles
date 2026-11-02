@@ -128,8 +128,8 @@ vim.pack.add({
   'https://github.com/neovim/nvim-lspconfig',
   {src = 'https://github.com/nvim-mini/mini.nvim', version = 'main'},
   {src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main'},
-	{src = "https://github.com/rose-pine/neovim",
-		name = "rose-pine",},
+	{src = "https://github.com/rose-pine/neovim", name = "rose-pine"},
+	{src = 'https://github.com/maxmx03/fluoromachine.nvim',},  
 })
 
 
@@ -234,7 +234,7 @@ vim.api.nvim_create_autocmd('PackChanged', {
 -- NOTE: treesitter features **must** be enabled manually
 -- https://github.com/nvim-treesitter/nvim-treesitter#supported-features
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = {'lua', 'vim', 'help'},
+  pattern = {'lua', 'vim', 'help', 'zig'},
   callback = function()
     -- Enable treesitter based syntax highlight
     pcall(vim.treesitter.start)
@@ -245,6 +245,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 vim.lsp.enable('pyright')
 vim.lsp.enable('ruff')
+vim.lsp.enable('zls')
 
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
@@ -263,3 +264,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
+
+
+-- zig format
+vim.g.zig_fmt_autosave = 0
+vim.g.zig_fmt_parse_errors = 0
