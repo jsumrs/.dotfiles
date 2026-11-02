@@ -112,6 +112,8 @@ if [[ $OSTYPE == darwin* ]]; then
     _adoc_preview_cleanup
     unfunction _adoc_preview_cleanup 2>/dev/null
   }
+    export PATH="$HOME/.jenv/bin:$PATH"
+    eval "$(jenv init -)"
 fi
 
 # ---- Plugins (Mac: brew install, WSL: apt install zsh-autosuggestions zsh-syntax-highlighting) ----
