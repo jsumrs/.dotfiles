@@ -114,6 +114,22 @@ endfunction
 nnoremap <leader>w :call ToggleQuickFix()<cr>
 nnoremap <leader>d :bd<cr>
 
+" mappings for fast compile -> fix loop 
+" Using pre existing compiler plugins, check $VIMRUNTIME/compiler/ for what's
+" supported
+" look into efm (errorformat) if I need more custom error matching
+" autocmd! clears preexisting bindings in the group if they exist
+augroup build
+    autocmd!
+    autocmd FileType python setlocal makeprg=python\ %
+    autocmd FileType java   compiler maven
+    autocmd FileType java   setlocal makeprg=mvn\ test
+augroup END
+
+nnoremap <leader>m :make!<cr>:copen<cr>
+nnoremap ]q :cnext<cr>
+nnoremap [q :cprev<cr>
+
 " searching ang grepping
 nnoremap <leader>g :copen<cr>:Ggrep!<SPACE>
 nnoremap K :Ggrep "\b<C-R><C-W>\b"<cr>:cw<cr>
